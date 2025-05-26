@@ -52,6 +52,17 @@
       padding: 8px;
       font-size: 16px;
     }
+    .note {
+      font-size: 16px;
+      color: #333;
+      margin: 10px auto 20px auto;
+      max-width: 700px;
+      line-height: 1.5em;
+    }
+    .note a {
+      color: blue;
+      text-decoration: underline;
+    }
     @media (max-width: 600px) {
       td {
         width: 40px;
@@ -63,9 +74,16 @@
 </head>
 <body>
   <h1>ஸ்ரீ ராமர் சக்கரம்</h1>
+
+  <div class="note">
+    இது ஒரு பாரம்பரிய ஆன்மிக முறையாகும். உங்கள் நம்பிக்கையின் அடிப்படையில், கண்களை மூடி ஸ்ரீ இராமரை பிரார்த்தித்து ஒரு எண்ணை தேர்ந்தெடுக்கலாம். ஒவ்வொரு எண்ணமும் ஒரு சிந்தனையை அல்லது அறிவுரையை வழங்கும்.<br>
+    This is a traditional spiritual practice where devotees pray to Lord Rama and choose a number with faith. Each number provides insight or guidance based on divine will.<br>
+    மேலும் விவரங்களுக்கு: <a href="https://en.wikipedia.org/wiki/Sriramachakra" target="_blank">Wikipedia: Sri Rama Chakra</a>
+  </div>
+
   <p>
-    <strong>தமிழ்:</strong> கண்களை மூடி, ஸ்ரீ இராமரை பிரார்த்தித்து, ஒரு எண்ணைத் தேர்ந்தெடுக்கவும்.<br>
-    <strong>English:</strong> Close your eyes, pray to Sri Lord Rama, and pick a number.
+    தமிழ்: கண்களை மூடி, ஸ்ரீ இராமரை பிரார்த்தித்து, ஒரு எண்ணைத் தேர்ந்தெடுக்கவும்.<br>
+    English: Close your eyes, pray to Sri Lord Rama, and pick a number.
   </p>
 
   <table id="chakraTable">
@@ -82,7 +100,7 @@
   <div id="result"></div>
 
   <div style="margin-top: 20px;">
-    <label for="langSelect"><strong>மொழிபெயர்ப்பு மொழி / Translation Language:</strong></label><br>
+    <label for="langSelect">மொழிபெயர்ப்பு மொழி / Translation Language:</label><br>
     <select id="langSelect">
       <option value="en">English</option>
       <option value="zh-CN">Chinese (Simplified)</option>
@@ -136,13 +154,14 @@
       const resultBox = document.getElementById("result");
 
       let html = `
-        <strong>தேர்ந்தெடுத்த எண்:</strong> ${number} | <strong>Selected Number:</strong> ${number}<br>
-        <strong>தமிழ்:</strong> ${msg.ta}<br>
-        <strong>English:</strong> ${msg.en}
+        தேர்ந்தெடுத்த எண்: ${number}<br>
+        Selected Number: ${number}<br>
+        தமிழ்: ${msg.ta}<br>
+        English: ${msg.en}
       `;
 
       if (lang !== "en") {
-        html += `<br><em>மொழிபெயர்ப்பு காத்திருக்கிறது...</em>`;
+        html += `<br>மொழிபெயர்ப்பு காத்திருக்கிறது...`;
         resultBox.innerHTML = html;
 
         fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=ta&tl=${lang}&dt=t&q=${encodeURIComponent(msg.ta)}`)
@@ -150,14 +169,15 @@
           .then(data => {
             const translated = data[0][0][0];
             resultBox.innerHTML = `
-              <strong>தேர்ந்தெடுத்த எண்:</strong> ${number} | <strong>Selected Number:</strong> ${number}<br>
-              <strong>தமிழ்:</strong> ${msg.ta}<br>
-              <strong>English:</strong> ${msg.en}<br>
-              <strong>Translation:</strong> ${translated}
+              தேர்ந்தெடுத்த எண்: ${number}<br>
+              Selected Number: ${number}<br>
+              தமிழ்: ${msg.ta}<br>
+              English: ${msg.en}<br>
+              மொழிபெயர்ப்பு: ${translated}
             `;
           })
           .catch(() => {
-            resultBox.innerHTML += `<br><span style="color:red;">மொழிபெயர்ப்பு தோல்வியடைந்தது</span>`;
+            resultBox.innerHTML += `<br>மொழிபெயர்ப்பு தோல்வியடைந்தது`;
           });
       } else {
         resultBox.innerHTML = html;
