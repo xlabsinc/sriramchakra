@@ -3,150 +3,659 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ஸ்ரீ ராமர் சக்கரம்</title>
+  <title>ஸ்ரீ ராம சக்ரம் - Divine Guidance</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Latha', sans-serif;
-      background-color: #fffce0;
-      text-align: center;
+      font-family: 'Poppins', 'Latha', sans-serif;
+      background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 50%, #e17055 100%);
+      min-height: 100vh;
       padding: 20px;
+      position: relative;
+      overflow-x: hidden;
     }
-    h1 {
-      color: #000;
+
+    /* Animated background elements */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,215,0,0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: float 20s ease-in-out infinite;
+      z-index: -1;
     }
-    table {
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    .container {
+      max-width: 1200px;
       margin: 0 auto;
-      border-collapse: collapse;
-      background-color: yellow;
-      box-shadow: 0 0 10px #aaa;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
     }
+
+    .header {
+      background: linear-gradient(135deg, #ff6b6b, #ffa500, #ff6b6b);
+      padding: 40px 20px;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .header::before {
+      content: '🕉️';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 2rem;
+      opacity: 0.3;
+      animation: pulse 2s infinite;
+    }
+
+    .header::after {
+      content: '🕉️';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2rem;
+      opacity: 0.3;
+      animation: pulse 2s infinite 1s;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.2); opacity: 0.6; }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      animation: slideInDown 1s ease-out;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      font-weight: 300;
+      animation: slideInUp 1s ease-out 0.3s both;
+    }
+
+    @keyframes slideInDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideInUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .content {
+      padding: 40px;
+    }
+
+    .description {
+      background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+      padding: 30px;
+      border-radius: 15px;
+      margin-bottom: 40px;
+      border-left: 5px solid #e17055;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .description::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(255,255,255,0.2), transparent);
+      border-radius: 50%;
+      animation: sparkle 3s infinite;
+    }
+
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+
+    .description p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    .description a {
+      color: #e17055;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 2px solid transparent;
+      transition: border-bottom 0.3s ease;
+    }
+
+    .description a:hover {
+      border-bottom: 2px solid #e17055;
+    }
+
+    .prayer-section {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+      border: 2px dashed #fdcb6e;
+    }
+
+    .prayer-text {
+      font-size: 1.3rem;
+      color: #2d3436;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .chakra-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .chakra-wrapper {
+      position: relative;
+      padding: 20px;
+      background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+
+    .chakra-wrapper::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, #ff6b6b, #ffa500, #ff6b6b);
+      border-radius: 22px;
+      z-index: -1;
+      animation: borderGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes borderGlow {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    table {
+      border-collapse: separate;
+      border-spacing: 8px;
+      background: transparent;
+    }
+
     td {
-      border: 1px solid #000;
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       font-size: 24px;
       font-weight: bold;
-      color: black;
+      color: #2d3436;
       cursor: pointer;
-    }
-    td:hover {
-      background-color: #fdd835;
-    }
-    #result {
-      margin-top: 30px;
-      font-size: 20px;
-      background: #fff450;
-      padding: 20px 30px;
       border-radius: 12px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      border: 2px solid #000;
-      font-weight: bold;
-      color: #000;
+      background: linear-gradient(135deg, #ffffff, #f8f9fa);
+      border: 2px solid #fdcb6e;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      display: table-cell;
+      vertical-align: middle;
       text-align: center;
-      line-height: 1.8em;
     }
+
+    td::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: radial-gradient(circle, rgba(255,215,0,0.3), transparent);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      transform: translate(-50%, -50%);
+    }
+
+    td:hover {
+      transform: translateY(-8px) scale(1.1);
+      background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+      border-color: #e17055;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+
+    td:hover::before {
+      width: 100%;
+      height: 100%;
+    }
+
+    td:active {
+      transform: translateY(-4px) scale(1.05);
+    }
+
+    .result-container {
+      margin-top: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+
+    .result-container.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #result {
+      background: linear-gradient(135deg, #ffffff, #f8f9fa);
+      padding: 30px;
+      border-radius: 20px;
+      border: 3px solid #fdcb6e;
+      font-size: 1.2rem;
+      line-height: 2;
+      color: #2d3436;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #result::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: left 0.5s ease;
+    }
+
+    #result.animate::before {
+      left: 100%;
+    }
+
+    .language-selector {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 25px;
+      border-radius: 15px;
+      margin-top: 30px;
+      text-align: center;
+      border: 2px solid #fdcb6e;
+    }
+
+    .language-selector label {
+      display: block;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #2d3436;
+    }
+
     #langSelect {
-      margin-top: 10px;
-      padding: 8px;
+      padding: 12px 20px;
       font-size: 16px;
+      border: 2px solid #fdcb6e;
+      border-radius: 25px;
+      background: white;
+      min-width: 200px;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
-    .note {
-      font-size: 16px;
-      color: #333;
-      margin: 10px auto 20px auto;
-      max-width: 700px;
-      line-height: 1.5em;
+
+    #langSelect:focus {
+      outline: none;
+      border-color: #e17055;
+      box-shadow: 0 0 20px rgba(225, 112, 85, 0.3);
     }
-    .note a {
-      color: blue;
-      text-decoration: underline;
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
     }
-    @media (max-width: 600px) {
+
+    .feature-card {
+      background: linear-gradient(135deg, #ffffff, #f8f9fa);
+      padding: 30px;
+      border-radius: 15px;
+      border: 2px solid #fdcb6e;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .feature-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #2d3436;
+    }
+
+    .feature-text {
+      color: #636e72;
+      line-height: 1.6;
+    }
+
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #e17055;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .donation-form {
+      background: linear-gradient(135deg, #00b894, #00cec9);
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      margin: 40px 0;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      border: 3px solid #fdcb6e;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .donation-form::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+      animation: float 15s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    .donation-form > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .donation-title {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .donation-text {
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 25px;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+
+    .donation-form input[type="image"] {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 10px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    .donation-form input[type="image"]:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        margin: 10px;
+        border-radius: 15px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .content {
+        padding: 20px;
+      }
+
       td {
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-  <h1>ஸ்ரீ ராமர் சக்கரம்</h1>
+  <div class="container">
+    <div class="header">
+      <h1>ஸ்ரீ ராம சக்ரம்</h1>
+      <div class="subtitle">Divine Guidance & Spiritual Wisdom</div>
+    </div>
 
-  <div class="note">
-    இது ஒரு பாரம்பரிய ஆன்மிக முறையாகும். உங்கள் நம்பிக்கையின் அடிப்படையில், கண்களை மூடி ஸ்ரீ இராமரை பிரார்த்தித்து ஒரு எண்ணை தேர்ந்தெடுக்கலாம். ஒவ்வொரு எண்ணமும் ஒரு சிந்தனையை அல்லது அறிவுரையை வழங்கும்.<br>
-    This is a traditional spiritual practice where devotees pray to Lord Rama and choose a number with faith. Each number provides insight or guidance based on divine will.<br>
-    மேலும் விவரங்களுக்கு: <a href="https://en.wikipedia.org/wiki/Sriramachakra" target="_blank">Wikipedia: Sri Rama Chakra</a>
-  </div>
+    <div class="content">
+      <div class="description">
+        <p>
+          <strong>ஸ்ரீ ராம சக்ரம்</strong> என்பது ஒரு பாரம்பரிய ஆன்மீக நடைமுறையாகும். இதில் பக்தர்கள் ஸ்ரீ ராமரை நம்பிக்கையுடன் வணங்கி, தங்கள் மனதில் எழும் கேள்விக்கு விடை பெறுவதற்காக ஒரு எண்ணைத் தேர்வு செய்கிறார்கள். ஒவ்வொரு எண்ணும் ஒரு குறிப்பிட்ட அர்த்தத்தை வழங்குகிறது.
+        </p>
+        <p>
+          <strong>Sri Rama Chakra</strong> is a traditional spiritual practice where devotees pray to Lord Rama with faith and choose a number to receive divine guidance for their questions. Each number provides specific insights and spiritual wisdom based on ancient traditions.
+        </p>
+        <p>
+          <strong>மேலும் விவரங்களுக்கு:</strong> <a href="https://en.wikipedia.org/wiki/Sriramachakra" target="_blank">Wikipedia: Sri Rama Chakra</a>
+        </p>
+      </div>
 
-  <p>
-    தமிழ்: கண்களை மூடி, ஸ்ரீ இராமரை பிரார்த்தித்து, ஒரு எண்ணைத் தேர்ந்தெடுக்கவும்.<br>
-    English: Close your eyes, pray to Sri Lord Rama, and pick a number.
-  </p>
+      <div class="prayer-section">
+        <div class="prayer-text">
+          முதலில் கண்களை மூடி, ஸ்ரீ ராமரை பிரார்த்தித்து, ஒரு எண்ணைத் தேர்வுசெய்யுங்கள்
+        </div>
+        <div style="font-style: italic; color: #636e72;">
+          First close your eyes, pray to Sri Lord Rama, and select a number with devotion
+        </div>
+      </div>
 
-  <table id="chakraTable">
-    <tbody>
-      <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
-      <tr><td>7</td><td>8</td><td>9</td><td>1</td><td>2</td><td>3</td></tr>
-      <tr><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr>
-      <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
-      <tr><td>7</td><td>8</td><td>9</td><td>1</td><td>2</td><td>3</td></tr>
-      <tr><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr>
-    </tbody>
-  </table>
+      <div class="chakra-container">
+        <div class="chakra-wrapper">
+          <table id="chakraTable">
+            <tbody>
+              <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+              <tr><td>7</td><td>8</td><td>9</td><td>1</td><td>2</td><td>3</td></tr>
+              <tr><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr>
+              <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+              <tr><td>7</td><td>8</td><td>9</td><td>1</td><td>2</td><td>3</td></tr>
+              <tr><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-  <div id="result"></div>
+      <div class="result-container" id="resultContainer">
+        <div id="result"></div>
+      </div>
 
-  <div style="margin-top: 20px;">
-    <label for="langSelect">மொழிபெயர்ப்பு மொழி / Translation Language:</label><br>
-    <select id="langSelect">
-      <option value="en">English</option>
-      <option value="zh-CN">Chinese (Simplified)</option>
-      <option value="hi">Hindi</option>
-      <option value="es">Spanish</option>
-      <option value="fr">French</option>
-      <option value="ar">Arabic</option>
-      <option value="bn">Bengali</option>
-      <option value="ru">Russian</option>
-      <option value="pt">Portuguese</option>
-      <option value="ur">Urdu</option>
-      <option value="id">Indonesian</option>
-      <option value="de">German</option>
-      <option value="ja">Japanese</option>
-      <option value="sw">Swahili</option>
-      <option value="pa">Punjabi</option>
-      <option value="te">Telugu</option>
-      <option value="ta">Tamil</option>
-      <option value="ml">Malayalam</option>
-      <option value="kn">Kannada</option>
-      <option value="my">Burmese</option>
-      <option value="km">Khmer</option>
-      <option value="lo">Lao</option>
-      <option value="th">Thai</option>
-      <option value="vi">Vietnamese</option>
-      <option value="tl">Filipino</option>
-      <option value="ms">Malay</option>
-      <option value="jv">Javanese</option>
-      <option value="su">Sundanese</option>
-    </select>
+      <div class="language-selector">
+        <label for="langSelect">மொழிபெயர்ப்பு மொழி / Translation Language:</label>
+        <select id="langSelect">
+          <option value="en">English</option>
+          <option value="zh-CN">Chinese (Simplified)</option>
+          <option value="hi">Hindi</option>
+          <option value="es">Spanish</option>
+          <option value="fr">French</option>
+          <option value="ar">Arabic</option>
+          <option value="bn">Bengali</option>
+          <option value="ru">Russian</option>
+          <option value="pt">Portuguese</option>
+          <option value="ur">Urdu</option>
+          <option value="id">Indonesian</option>
+          <option value="de">German</option>
+          <option value="ja">Japanese</option>
+          <option value="sw">Swahili</option>
+          <option value="pa">Punjabi</option>
+          <option value="te">Telugu</option>
+          <option value="ta">Tamil</option>
+          <option value="ml">Malayalam</option>
+          <option value="kn">Kannada</option>
+          <option value="my">Burmese</option>
+          <option value="km">Khmer</option>
+          <option value="lo">Lao</option>
+          <option value="th">Thai</option>
+          <option value="vi">Vietnamese</option>
+          <option value="tl">Filipino</option>
+          <option value="ms">Malay</option>
+          <option value="jv">Javanese</option>
+          <option value="su">Sundanese</option>
+        </select>
+      </div>
+
+      <!-- PayPal Donation Form -->
+      <div class="donation-form">
+        <div class="donation-title">Support This Sacred Service</div>
+        <div class="donation-text">
+          If this spiritual guidance has helped you, consider supporting the maintenance of this sacred service through a small donation.
+          <br><br>
+          <span style="font-size: 0.9rem; font-style: italic;">
+            இந்த ஆன்மீக வழிகாட்டுதல் உங்களுக்கு உதவியாக இருந்தால், இந்த புனித சேவையின் பராமரிப்புக்கு ஒரு சிறிய நன்கொடையின் மூலம் ஆதரவளிக்கவும்.
+          </span>
+        </div>
+        <!-- pay pal information : begin -->
+        <form action="https://www.paypal.com/donate" method="post" target="_top">
+        <input type="hidden" name="hosted_button_id" value="H3KMKJ3NYNRCW" />
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+        <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+        </form>
+        <!-- pay pal information : end -->
+      </div>
+
+      <div class="features">
+        <div class="feature-card">
+          <span class="feature-icon">🕉️</span>
+          <div class="feature-title">Spiritual Guidance</div>
+          <div class="feature-text">
+            Receive divine wisdom and guidance through the ancient practice of Sri Rama Chakra, connecting you with spiritual insights.
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🌍</span>
+          <div class="feature-title">Multiple Languages</div>
+          <div class="feature-text">
+            Access guidance in multiple languages to connect with devotees worldwide and make the wisdom accessible to all.
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">📱</span>
+          <div class="feature-title">Modern Interface</div>
+          <div class="feature-text">
+            Experience traditional wisdom through a modern, responsive interface designed for today's digital devotees.
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
     const meanings = {
-      1: { ta: "ஸ்ரீ ராமர் கிருபையால் நினைத்த காரியம் ஜெயம்.", en: "By Lord Rama's grace, your wish will be successful." },
-      2: { ta: "என்னைய கிரியை முடியும். சத்குரு உண்டு.", en: "Your plan will be completed. A guiding guru is present." },
-      3: { ta: "சத்குரு பலமாயினும் கடைசியில் சுபம்.", en: "Though delayed, blessings will come in the end." },
-      4: { ta: "இக்காலத்தில் தீமையேயன்றி நன்மையல்ல.", en: "Currently, negativity may outweigh good." },
-      5: { ta: "விசுவமே கிரியாத நன்மையுண்டாகும்.", en: "Despite challenges, good things will happen." },
-      6: { ta: "சீக்கிரத்தில் கெடுதி சம்பவிக்கும்.", en: "Soon, an obstacle or danger may arise." },
-      7: { ta: "கடவுள் அனுகிரகத்தால் நன்மையுண்டு.", en: "With divine blessings, good will prevail." },
-      8: { ta: "மனவுறுதியேயன்றி தீமையுணடாகாது.", en: "Only mental weakness brings failure." },
-      9: { ta: "விசுவபடவேண்டும். இனி சுகமுண்டு.", en: "Have faith. Peace and comfort are ahead." }
+      1: {
+        ta: "ஸ்ரீ ராமர் திருவருளால் நினைத்த காரியம் பலன்கிடைத்து வெற்றி அடைவீர்கள்.",
+        en: "By Lord Rama's divine grace, your intended work will be successful and you will achieve victory."
+      },
+      2: {
+        ta: "உங்கள் திட்டம் முழுமையாக நிறைவேறும். வழிகாட்டும் குரு உள்ளார்.",
+        en: "Your plans will be completely fulfilled. A guiding guru is present to help you."
+      },
+      3: {
+        ta: "தாமதமானாலும் பலன்கிடைக்கும். தெய்வ அனுக்கிரகம் இருப்பதால் வெற்றி கிடைக்கும்.",
+        en: "Though delayed, success will come. Divine blessings ensure ultimate victory."
+      },
+      4: {
+        ta: "தற்போதைய நிலையில் எதிர்பார்க்கும் பயன் கிடைக்காது. பொறுமையுடன் இருங்கள்.",
+        en: "Currently, expected benefits may not materialize. Be patient and wait for the right time."
+      },
+      5: {
+        ta: "விக்கினங்கள் இருந்தாலும் நல்லது நடக்கும். கடுமையான முயற்சியால் வெற்றி கிடைக்கும்.",
+        en: "Despite obstacles, good things will happen. Success comes through persistent effort."
+      },
+      6: {
+        ta: "மிக விரைவில் தடை அல்லது ஆபத்து வரலாம். எச்சரிக்கையுடன் இருங்கள்.",
+        en: "Very soon, obstacles or dangers may arise. Stay alert and cautious."
+      },
+      7: {
+        ta: "தெய்வ அனுக்கிரகத்தால் எல்லா விஷயங்களும் நன்மையாக முடியும்.",
+        en: "With divine blessings, all matters will conclude favorably and successfully."
+      },
+      8: {
+        ta: "மனவுறுதி இல்லாதவர்களுக்கு மட்டுமே தோல்வி. உறுதியுடன் முன்னேறுங்கள்.",
+        en: "Only those lacking mental strength face failure. Proceed with determination."
+      },
+      9: {
+        ta: "விரைவில் சுகசெழுமை கிடைக்கும். சாந்தி மற்றும் மகிழ்ச்சி உண்டாகும்.",
+        en: "Soon prosperity and comfort will come. Peace and happiness will prevail."
+      }
     };
 
     let selectedNumber = null;
+    let translationCache = {};
+
+    function showResult(number) {
+      const resultContainer = document.getElementById("resultContainer");
+      const resultBox = document.getElementById("result");
+
+      resultContainer.classList.add("show");
+      resultBox.classList.add("animate");
+
+      setTimeout(() => {
+        resultBox.classList.remove("animate");
+      }, 500);
+
+      updateResultDisplay(number);
+    }
 
     function updateResultDisplay(number) {
       const lang = document.getElementById("langSelect").value;
@@ -154,49 +663,84 @@
       const resultBox = document.getElementById("result");
 
       let html = `
-        தேர்ந்தெடுத்த எண்: ${number}<br>
-        Selected Number: ${number}<br>
-        தமிழ்: ${msg.ta}<br>
-        English: ${msg.en}
+        <div style="text-align: center; margin-bottom: 20px;">
+          <div style="font-size: 1.5rem; font-weight: bold; color: #e17055; margin-bottom: 10px;">
+            தேர்ந்தெடுக்கப்பட்ட எண் / Selected Number: ${number}
+          </div>
+        </div>
+        <div style="margin-bottom: 15px;">
+          <strong>தமிழில்:</strong><br>${msg.ta}
+        </div>
+        <div style="margin-bottom: 15px;">
+          <strong>English:</strong><br>${msg.en}
+        </div>
       `;
 
-      if (lang !== "en") {
-        html += `<br>மொழிபெயர்ப்பு காத்திருக்கிறது...`;
-        resultBox.innerHTML = html;
+      if (lang !== "en" && lang !== "ta") {
+        const cacheKey = `${number}_${lang}`;
 
-        fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=ta&tl=${lang}&dt=t&q=${encodeURIComponent(msg.ta)}`)
-          .then(res => res.json())
-          .then(data => {
-            const translated = data[0][0][0];
-            resultBox.innerHTML = `
-              தேர்ந்தெடுத்த எண்: ${number}<br>
-              Selected Number: ${number}<br>
-              தமிழ்: ${msg.ta}<br>
-              English: ${msg.en}<br>
-              மொழிபெயர்ப்பு: ${translated}
-            `;
-          })
-          .catch(() => {
-            resultBox.innerHTML += `<br>மொழிபெயர்ப்பு தோல்வியடைந்தது`;
-          });
+        if (translationCache[cacheKey]) {
+          html += `<div><strong>Translation:</strong><br>${translationCache[cacheKey]}</div>`;
+          resultBox.innerHTML = html;
+        } else {
+          html += `<div><strong>Translation:</strong><br><span class="loading"></span> Translating...</div>`;
+          resultBox.innerHTML = html;
+
+          fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${lang}&dt=t&q=${encodeURIComponent(msg.en)}`)
+            .then(res => res.json())
+            .then(data => {
+              const translated = data[0][0][0];
+              translationCache[cacheKey] = translated;
+
+              const updatedHtml = html.replace(
+                '<span class="loading"></span> Translating...',
+                translated
+              );
+              resultBox.innerHTML = updatedHtml;
+            })
+            .catch(() => {
+              const errorHtml = html.replace(
+                '<span class="loading"></span> Translating...',
+                'Translation unavailable'
+              );
+              resultBox.innerHTML = errorHtml;
+            });
+        }
       } else {
         resultBox.innerHTML = html;
       }
     }
 
+    // Add click event listeners to table cells
     document.querySelectorAll("#chakraTable td").forEach(cell => {
       cell.addEventListener("click", () => {
         selectedNumber = parseInt(cell.textContent);
-        updateResultDisplay(selectedNumber);
+
+        // Add visual feedback
+        cell.style.transform = "scale(0.95)";
+        setTimeout(() => {
+          cell.style.transform = "";
+        }, 150);
+
+        showResult(selectedNumber);
       });
     });
 
+    // Language selector change event
     document.getElementById("langSelect").addEventListener("change", () => {
       if (selectedNumber !== null) {
         updateResultDisplay(selectedNumber);
       }
     });
+
+    // Add keyboard navigation
+    document.addEventListener("keydown", (e) => {
+      if (e.key >= "1" && e.key <= "9") {
+        const number = parseInt(e.key);
+        selectedNumber = number;
+        showResult(selectedNumber);
+      }
+    });
   </script>
 </body>
 </html>
-
